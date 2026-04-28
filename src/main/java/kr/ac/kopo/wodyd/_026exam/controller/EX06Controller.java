@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.management.MBeanAttributeInfo;
+
+
 @Controller
 public class EX06Controller {
 //    @GetMapping("/exam06")
