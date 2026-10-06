@@ -5,7 +5,6 @@ import kr.ac.kopo.wodyd._026exam.repository.Member3Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -31,27 +30,27 @@ public class Chap14_01Controller {
     }
 
     @PostMapping("/insert")
-    public String insertMember3(@ModelAttribute("member") Member3 member3, BindingResult result) {
-        if (result.hasErrors()) {
-            return "viewPage02_new";
-        }
+    public String insertMember3(@ModelAttribute("member") Member3 member3) {
         repository.save(member3);
         return "redirect:/exam14_01";
     }
 
     @GetMapping("/edit/{id}")
     public String updateInputMethod(@PathVariable(name = "id")int id, Model model){
-        Member3 member3 = repository.findById(id).orElseThrow();
+        Optional<Member3> member3 = repository.findById(id);
         model.addAttribute("member", member3);
         return "viewPage02_edit";
     }
 
     @PostMapping("/update")
-    public String updateMember(@ModelAttribute("member")Member3 member3, BindingResult result){
-        if (result.hasErrors()) {
-            return "viewPage02_edit";
-        }
+    public String updateMember(@ModelAttribute("member")Member3 member3){
         repository.save(member3);
+        return "redirect:/exam14_01";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteMember(@PathVariable(name = "id")int id){
+        repository.deleteById(id);
         return "redirect:/exam14_01";
     }
 }
