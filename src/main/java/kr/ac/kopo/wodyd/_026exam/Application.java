@@ -1,5 +1,6 @@
 package kr.ac.kopo.wodyd._026exam;
 
+import kr.ac.kopo.wodyd._026exam.configure.SecurityConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

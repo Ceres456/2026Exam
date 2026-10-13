@@ -13,36 +13,30 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/chap07")
 public class Chap07_01Controller {
+
     @GetMapping("/form")
     public String requestForm(){
         return "viewFilePage";
     }
 
     @PostMapping("/form")
-    public String requestFileUploadResult(@ModelAttribute Member member, Model model) {
-//    public String requestFileUploadResult(@RequestParam("name") String name,
-//                                          @RequestParam("fileImage") MultipartFile file,
-//                                          Model model) {
-//    public String requestFileUploadResult(MultipartHttpServletRequest request, Model model) throws IOException {
-
-//        String name = request.getParameter("name");
-//        MultipartFile file = request.getFile("fileImage");
+    public String requestFileUploadResult(@ModelAttribute Member member, Model model){
         String name = member.getName();
         MultipartFile file = member.getFileImage();
-        String originFileName = file.getOriginalFilename();
-        File saveFile = new File("d://upload//"+ name + "_" + originFileName);
 
-        try{
+        String originFileName = file.getOriginalFilename();
+        File saveFile = new File("d:\\upload\\"+ name + "_" + originFileName);
+
+        try {
             file.transferTo(saveFile);
             model.addAttribute("title", "파일업로드 결과 페이지");
-            model.addAttribute("originfileName", originFileName);
+            model.addAttribute("originFileName", originFileName);
             model.addAttribute("saveFileName", saveFile.getName());
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-
-
         return "viewFilePageResult";
     }
+
 }

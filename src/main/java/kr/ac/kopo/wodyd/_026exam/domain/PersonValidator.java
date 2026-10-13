@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+
 @Component
 public class PersonValidator implements Validator {
     @Override
@@ -25,7 +26,6 @@ public class PersonValidator implements Validator {
             ValidationUtils.rejectIfEmptyOrWhitespace(errors, "age", null, "나이를 입력하세요.");
 
         if (email == null || email.trim().isEmpty())
-            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", null, "전자주소를 입력하세요.");
-
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", null, "email을 입력하세요.");
     }
 }

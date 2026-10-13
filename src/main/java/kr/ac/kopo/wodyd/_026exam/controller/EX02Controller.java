@@ -10,5 +10,4 @@ public class EX02Controller {
     public String requestMethod(){
         return "<h1>@RestController 연습 중...</h1>";
     }
-
 }

@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Chap13_01Controller {
     @GetMapping
     public String showForm(){
-        return "viewPage13_form";
+        return "viewPage13_01_form";
     }
 
     @PostMapping
     public String submit(@RequestBody String param, Model model){
-    return "";
+        model.addAttribute("data1", "@RequestBody로 정보 받기");
+        model.addAttribute("data2", param);
+        return "viewPage13_01_result";
     }
 }

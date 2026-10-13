@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Beam Validation 유효성 검사</title>
+    <title>1. Bean Validation유형 유효성 검사</title>
     <style>
         span{
             color: red;
@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-    <h2>1. Bean Validation 유형 유효성 검사</h2>
+    <h2>1. Bean Validation유형 유효성 검사</h2>
     <form th:object="${product}" action="/exam09_01" method="post">
         <p>제품명: <input type="text" th:field="*{name}"><span th:errors="*{name}"></span></p>
         <p>가격: <input type="text" th:field="*{price}"><span th:errors="*{price}"></span></p>

@@ -12,30 +12,25 @@ import java.util.List;
 public interface Member3Repository2 extends JpaRepository<Member3, Integer> {
 
     @Transactional
-    @Query(value = "select * from Member3", nativeQuery= true)
-//    @Query(value = "select  entity from Member3 entity")
+    @Query(value = "select * from Member3", nativeQuery = true)
     public List<Member3> selectMembers();
 
     @Transactional
-    @Query(value = "select * from Member3 where id = ?", nativeQuery = true)
-//    @Query(value = "select entity from Member3 entity where id = :e_id")
+    @Query(value = "select * from Member3  where id = ?", nativeQuery = true)
     public Member3 selectById(@Param("e_id")int id);
 
     @Transactional
     @Modifying
     @Query(value = "insert into Member3(name, age, email) values(?, ?, ?)", nativeQuery = true)
-//    @Query(value = "insert into Member3(name, age, email) values(:e_name, :e_age, :e_email)")
-    public int insertMember(@Param("e_name") String name, @Param("e_name")int age, @Param("e_name")String email);
+    public int insertMember(@Param("e_name") String name, @Param("e_age")int age, @Param("e_email")String email);
 
     @Transactional
     @Modifying
-    @Query(value = "update Member3 set name = ?, age=?, email=? where id = ?", nativeQuery = true)
-//    @Query(value = "update Member3 set name = ?, age=?, email=? where id = ?")
-    public int updateMember(@Param("e_name") String name, @Param("e_name")int age, @Param("e_name")String email, @Param("e_id")int id);
+    @Query(value = "update Member3 set name=?, age=?, email=? where id= ?", nativeQuery = true)
+    public int updateMember(@Param("e_name") String name, @Param("e_age")int age, @Param("e_email")String email, @Param("e_id")int id);
 
     @Transactional
     @Modifying
-    @Query(value = "delete from Member3 where id = ?", nativeQuery = true)
-//    @Query(value = "delete from Member3 where id = :e_id")
-    public int deleteMember(@Param("e_id")int id);
+    @Query(value = "delete from Member3 where id= ?", nativeQuery = true)
+    public int deleteMember( @Param("e_id")int id);
 }

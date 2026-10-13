@@ -12,17 +12,15 @@ import java.util.Calendar;
 public class Chap05_02Controller {
 
     @GetMapping("/chap0502/{name}/{birthyear}")
-    public String requestMethod(@PathVariable("name") String name, @PathVariable("birthyear") int birthyear, Model model){
+    public String requestMethod(@PathVariable("name") String name, @PathVariable("birthyear") int birthYear , Model model){
         Calendar calendar = Calendar.getInstance();
         int nowYear = calendar.get(Calendar.YEAR);
-        int age = nowYear - birthyear;
+        int age = nowYear - birthYear;
 
         model.addAttribute("name", name);
         model.addAttribute("age", age);
+
         return "viewPage05_02";
     }
-
-
-
 
 }

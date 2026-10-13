@@ -1,6 +1,5 @@
 package kr.ac.kopo.wodyd._026exam.controller;
 
-
 import kr.ac.kopo.wodyd._026exam.exception.UserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,15 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.IllformedLocaleException;
-
 @Controller
 @RequestMapping("/exam11_01")
 public class Chap11_01Controller {
-    @ResponseStatus(value = HttpStatus.BAD_GATEWAY, reason = "요청이 잘못되었습니다.")
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "요청이 잘못되었습니다.")
     @GetMapping("/exam01")
     public void requestMethod01(){
-        System.out.println(new IllformedLocaleException("요청에 실패했습니다.").getMessage());
+        System.out.println(new IllegalArgumentException("요청에 실패했습니다.").getMessage());
     }
 
     @GetMapping("/exam02")
@@ -31,12 +28,6 @@ public class Chap11_01Controller {
         throw new UserException("UserException @ExceptionHandler 예제 메시지입니다.");
     }
 
-    @ExceptionHandler(UserException.class)
-    public String handlerException(UserException ex, Model model){
-        model.addAttribute("data1", ex.getMessage());
-        model.addAttribute("data2", ex);
-        return "viewPage11_01";
-    }
 
     @GetMapping("/exam04")
     public void requestMethod04(){

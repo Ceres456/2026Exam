@@ -13,21 +13,15 @@ import java.util.List;
 public class Chap13_05Controller {
 
     @GetMapping
-    public List<Person> showJsonTypeData() {
-        List<Person> list = new ArrayList<>();
-
-        Person person1 = new Person();
-        person1.setName("PolyKim");
-        person1.setAge("30");
-        person1.setEmail("polykim@kopo");
-        list.add(person1);
-
-        Person person2 = new Person();
-        person2.setName("Lee");
-        person2.setAge("25");
-        person2.setEmail("lee@kopo");
-        list.add(person2);
-
-        return list;
+    public List<Person> showJsonTypeData(){
+        Person person1 = new Person("PolyPark", "20", "polypark@naver.com");
+        Person person2 = new Person("JaeiSim", "16", "jaeiSim@gmail.com");
+        Person person3 = new Person("DonheeLee", "25", "donhee@naver.com");
+        ArrayList<Person> arrayList = new ArrayList<Person>();
+        arrayList.add(person1);
+        arrayList.add(person2);
+        arrayList.add(person3);
+        System.out.println(arrayList);
+        return arrayList;
     }
 }
